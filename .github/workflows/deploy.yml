@@ -34,7 +34,7 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-        name: Checkov Scan
+      - name: Checkov Scan
         uses: bridgecrewio/checkov-action@v1 # Use a recent stable version
         with: 
           directory: . 
