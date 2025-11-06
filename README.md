@@ -1,23 +1,19 @@
-🚀 Quick Start Guide
-Ready to spin up some infrastructure? Follow these three simple steps:
+# Deploy EC2 with Terraform via GitHub Actions
 
-1. The Terraform Files
-Ensure your root directory contains valid Terraform configuration files (.tf) that define the EC2 instance and its dependencies (VPC, Security Group, etc.).
+This repository contains the necessary Terraform configuration and a GitHub Actions workflow to automatically deploy an Amazon Web Services (AWS) EC2 instance whenever changes are pushed to the `main` branch.
 
-2. Configure GitHub Secrets
-For the pipeline to authenticate with AWS, you must define the following three variables in your GitHub Repository Secrets (Settings > Secrets and variables > Actions):
+Think of it as setting your infrastructure to "auto-pilot" – push your changes, and watch the magic happen (or, you know, the infrastructure provision).
 
-AWS_ACCESS_KEY_ID
+## How It Works
 
-AWS_SECRET_ACCESS_KEY
+This setup uses a **GitHub Actions workflow** to manage the infrastructure defined by the Terraform files in this repository.
 
-AWS_REGION (e.g., us-west-2)
-
-3. Commit and Push
-Once the files are committed and the secrets are set, push your code to the main branch. The GitHub Action will automatically trigger and deploy your infrastructure in minutes.
-
-🔒 Security Best Practices
-Important: The AWS Access Keys used in the secrets should belong to an IAM User that adheres strictly to the Principle of Least Privilege. Grant this user only the permissions required to manage the specific resources defined in your Terraform files, and nothing more.
-
-
-
+1.  **Trigger:** A `push` event to the `main` branch triggers the workflow.
+2.  **Checkout:** The repository code is checked out.
+3.  **Setup:** Terraform CLI and AWS credentials are set up using GitHub Actions.
+4.  **Terraform Workflow:** The standard Terraform commands are executed in sequence:
+    * `terraform init` (Initializes the working directory)
+    * `terraform fmt` (Formats the configuration)
+    * `terraform validate` (Verifies the configuration syntax)
+    * `terraform plan` (Creates an execution plan)
+    * `terraform apply -auto-approve` (Applies the changes, provisioning the EC2 instance)
