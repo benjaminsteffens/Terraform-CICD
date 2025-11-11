@@ -1,4 +1,3 @@
-# This file defines the required providers and sets the AWS region.
 terraform {
   required_providers {
     aws = {
