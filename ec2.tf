@@ -10,5 +10,3 @@ resource "aws_instance" "ec2_1" {
     Name = "My-Fixed-EC2-Instance"
   }
 }
-
-}
