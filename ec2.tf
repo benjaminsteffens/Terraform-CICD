@@ -5,3 +5,4 @@ resource "aws_instance" "Terraform-CICD" {
   tags = {
     Name = "webserver1"
 }
+}
