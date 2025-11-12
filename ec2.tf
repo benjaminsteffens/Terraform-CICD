@@ -3,6 +3,6 @@ resource "aws_instance" "Terraform-CICD" {
   instance_type = "t2.micro" 
 
   tags = {
-    Name = "webserver1"
+    Name = "Terraform-CICD"
 }
 }
